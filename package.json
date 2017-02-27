@@ -5,12 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --colors --inline --content-base ."
+    "dev": "webpack-dev-server --colors --inline --content-base src",
+    "build": "webpack --progress --color -p --config webpack.config.js",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:dev": "webpack-dev-server --inline --content-base . --history-api-fallback",
+    "start:prod": "webpack && node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "compression": "^1.6.2",
+    "express": "^4.14.1",
     "html-to-react": "^1.2.4",
+    "if-env": "^1.0.0",
     "immutable": "^3.8.1",
     "react": "^15.4.1",
     "react-bootstrap": "^0.30.7",

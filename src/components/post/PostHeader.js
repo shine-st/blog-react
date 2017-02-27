@@ -46,12 +46,11 @@ import ReactDOM from 'react-dom';
 
 const PostHeader = ({title, subtitle, createAt}) => {
     let backgroundImage = {
-        backgroundImage: "url('../res/img/post-bg.jpg')"
+        backgroundImage: "url('res/img/post_bg.jpg')"
     }
 
     return (
         <div className="intro-header" style={backgroundImage}>
-            post header
             <div className="container">
                 <div className="row">
                     <div className="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">

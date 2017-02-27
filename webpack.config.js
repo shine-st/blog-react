@@ -11,8 +11,11 @@ module.exports = {
         './src/index.js',
     ],
     output: {
-        path: `${__dirname}/dist`,
-        filename: 'index_bundle.js',
+        // path: `${__dirname}/dist`,
+        // path: `src`,
+        path: `${__dirname}/src`,
+        filename: 'bundle.js',
+        publicPath: '/',
     },
     module: {
         preLoaders: [

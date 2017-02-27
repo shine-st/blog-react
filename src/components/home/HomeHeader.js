@@ -42,7 +42,7 @@ import Home from './HomeContent'
 const HomeHeader = () => {
     let hr = React.createElement('hr', '', '');
     let backgroundImage = {
-        backgroundImage: "url('../res/img/home.jpg')"
+        backgroundImage: "url('res/img/home_bg.jpg')"
     }
 
     return (

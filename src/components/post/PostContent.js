@@ -1,4 +1,5 @@
 import React from 'react';
+import Disqus from '../Disqus'
 // var HtmlToReactParser = require('html-to-react').Parser;
 //
 // class PostContent extends React.Component {
@@ -38,6 +39,7 @@ const PostContent = ({content}) => {
         <article>
             <div className="container">
                 {parser.parse(content)}
+                <Disqus />
             </div>
         </article>
     )

@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 const AboutHeader = ({title}) => {
     let hr = React.createElement('hr', '', '');
     let backgroundImage = {
-        backgroundImage: "url('../res/img/about-bg.jpg')"
+        backgroundImage: "url('res/img/about_bg.jpg')"
     }
 
     return (
