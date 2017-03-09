@@ -7,9 +7,9 @@ import { connect } from 'react-redux'
 import React, { PropTypes } from 'react'
 import { getPosts } from '../actions';
 
-const ContentContainer = ({post, metaData, path, initPost}) => {
+const ContentContainer = ({post, metaData, path, update, initPost}) => {
     if ((!post.get('content')) || metaData.get('path') != path)
-        initPost(path);
+        initPost(path, update);
 
     return (<div>
         <PostHeader
@@ -28,7 +28,8 @@ const mapStateToProps = (state, ownProps) => {
     return {
         post: state.getIn(['post', 'post']),
         metaData: state.getIn(['post', 'post']).get('post_meta_data'),
-        path: ownProps.params.path
+        path: ownProps.params.path,
+        update: ownProps.location.query.update ? true : false
     };
 }
 
@@ -36,6 +37,6 @@ const mapStateToProps = (state, ownProps) => {
 export default connect(
     mapStateToProps,
     dispatch => ({
-        initPost: (path) => (dispatch(getPosts(path)))
+        initPost: (path, update) => (dispatch(getPosts(path, update)))
     })
 )(ContentContainer)

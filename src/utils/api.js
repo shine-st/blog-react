@@ -8,12 +8,12 @@ import { showSpinner, hideSpinner } from '../actions/uiActions';
 
 let config = require('Config')
 
-export const callApi = (uri, actionType) => (
+export const callApi = (uri, actionType, update = false) => (
     (dispatch) => {
         dispatch(showSpinner);
-        console.log(`callApi with url: ${uri}`);
+        console.log(`callApi with url: ${uri}?update=${update}`);
 
-        fetch(`${config.api.host}/${uri}`)
+        fetch(`${config.api.host}/${uri}?update=${update}`)
             .then(response => response.json())
             .then((json) => {
                 // console.log(json);

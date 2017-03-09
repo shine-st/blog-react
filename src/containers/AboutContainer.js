@@ -7,9 +7,9 @@ import { connect } from 'react-redux'
 import React, { PropTypes } from 'react'
 import { getAboutInfo } from '../actions';
 
-const AboutContainer = ({title, content, type, getAboutInfo}) => {
+const AboutContainer = ({title, content, type, update, getAboutInfo}) => {
     if (!content)
-        getAboutInfo(type);
+        getAboutInfo(type, update);
 
     return (<div>
         <AboutHeader
@@ -23,12 +23,12 @@ const AboutContainer = ({title, content, type, getAboutInfo}) => {
 
 
 const mapStateToProps = (state, ownProps) => {
-    console.log('check');
-    console.log(ownProps.params.path);
+
     return {
         title: state.getIn(['about', 'title']),
         content: state.getIn(['about', 'content']),
-        type: ownProps.params.type
+        type: ownProps.params.type,
+        update: ownProps.location.query.update ? true : false
     };
 }
 
@@ -36,6 +36,6 @@ const mapStateToProps = (state, ownProps) => {
 export default connect(
     mapStateToProps,
     dispatch => ({
-        getAboutInfo: (type) => (dispatch(getAboutInfo(type)))
+        getAboutInfo: (type, update) => (dispatch(getAboutInfo(type, update)))
     })
 )(AboutContainer)

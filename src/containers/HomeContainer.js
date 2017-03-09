@@ -7,10 +7,10 @@ import {connect} from 'react-redux'
 import React, {PropTypes} from 'react'
 import { getHomePosts } from '../actions';
 
-const HomeContainer = ({currentPage, page, initHomePosts}) => {
+const HomeContainer = ({currentPage, page, update, initHomePosts}) => {
     // console.log(currentPage.get('post_meta_list'));
     if ((currentPage.get('post_meta_list').isEmpty()) || currentPage.get('page') != page)
-        initHomePosts(page);
+        initHomePosts(page, update);
 
     return (<div>
         <HomeHeader />
@@ -23,10 +23,10 @@ const HomeContainer = ({currentPage, page, initHomePosts}) => {
 
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state.getIn(['home', 'currentPage']).get('post_meta_list').isEmpty());
     return {
         currentPage: state.getIn(['home', 'currentPage']),
-        page: ownProps.params.page
+        page: ownProps.params.page,
+        update: ownProps.location.query.update ? true : false
     };
 }
 
@@ -34,6 +34,6 @@ const mapStateToProps = (state, ownProps) => {
 export default connect(
     mapStateToProps,
     dispatch => ({
-        initHomePosts: (page) => (dispatch(getHomePosts(page)))
+        initHomePosts: (page, update) => (dispatch(getHomePosts(page, update)))
     })
 )(HomeContainer)

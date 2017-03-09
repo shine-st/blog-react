@@ -7,14 +7,12 @@ import { GET_HOME_SUCCESS,GET_ABOUT_SUCCESS } from '../constants/actionTypes';
 
 import { callApi } from '../utils';
 
-export const getHomePosts = (page = 1) => {
+export const getHomePosts = (page, update) => {
     let uri = `home/${page}`;
-    console.log(uri);
-    return callApi(uri, GET_HOME_SUCCESS);
+    return callApi(uri, GET_HOME_SUCCESS, update);
 };
 
-export const getAboutInfo = (type) => {
+export const getAboutInfo = (type, update) => {
     let uri = `about/${type}`;
-    console.log(uri);
-    return callApi(uri, GET_ABOUT_SUCCESS);
+    return callApi(uri, GET_ABOUT_SUCCESS, update);
 };
