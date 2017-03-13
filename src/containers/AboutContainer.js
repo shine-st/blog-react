@@ -7,20 +7,25 @@ import { connect } from 'react-redux'
 import React, { PropTypes } from 'react'
 import { getAboutInfo } from '../actions';
 
-const AboutContainer = ({title, content, type, update, getAboutInfo}) => {
-    if (!content)
-        getAboutInfo(type, update);
+class AboutContainer extends React.Component {
 
-    return (<div>
-        <AboutHeader
-            title={title}
-        />
-        <AboutContent
-            content={content}
-        />
-    </div>);
+    constructor(props) {
+        super(props);
+        props.getAboutInfo(props.type, props.update);
+    }
+
+
+    render() {
+        return (<div>
+            <AboutHeader
+                title={this.props.title}
+            />
+            <AboutContent
+                content={this.props.content}
+            />
+        </div>);
+    }
 }
-
 
 const mapStateToProps = (state, ownProps) => {
 

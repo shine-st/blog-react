@@ -3,22 +3,28 @@
  */
 import HomeHeader from '../components/home/HomeHeader'
 import HomeContent from '../components/home/HomeContent'
-import {connect} from 'react-redux'
-import React, {PropTypes} from 'react'
+import { connect } from 'react-redux'
+import React, { PropTypes } from 'react'
 import { getHomePosts } from '../actions';
 
-const HomeContainer = ({currentPage, page, update, initHomePosts}) => {
-    // console.log(currentPage.get('post_meta_list'));
-    if ((currentPage.get('post_meta_list').isEmpty()) || currentPage.get('page') != page)
-        initHomePosts(page, update);
 
-    return (<div>
-        <HomeHeader />
-        <HomeContent
-            metaList={currentPage.get('post_meta_list')}
-            page={page}
-        />
-    </div>);
+class HomeContainer extends React.Component {
+
+    constructor(props) {
+        super(props);
+        props.initHomePosts(props.page, props.update);
+    }
+
+
+    render() {
+        return (<div>
+            <HomeHeader />
+            <HomeContent
+                metaList={this.props.currentPage.get('post_meta_list')}
+                page={this.props.page}
+            />
+        </div>);
+    }
 }
 
 
