@@ -10,7 +10,7 @@ let config = require('Config')
 
 export const callApi = (uri, actionType, update = false) => (
     (dispatch) => {
-        dispatch(showSpinner);
+        dispatch(showSpinner());
         console.log(`callApi with url: ${uri}?update=${update}`);
 
         fetch(`${config.api.host}/${uri}?update=${update}`)
@@ -18,7 +18,7 @@ export const callApi = (uri, actionType, update = false) => (
             .then((json) => {
                 // console.log(json);
                 dispatch({type: actionType, payload: json.payload});
-                dispatch(hideSpinner);
+                dispatch(hideSpinner());
             })
             .catch((error) => {
                 console.error(error);

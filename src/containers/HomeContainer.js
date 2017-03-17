@@ -12,7 +12,11 @@ class HomeContainer extends React.Component {
 
     constructor(props) {
         super(props);
-        props.initHomePosts(props.page, props.update);
+        props.getHomePosts(props.page, props.update);
+    }
+
+    handleNextPage = (page) => (e) => {
+        this.props.getHomePosts(page, false);
     }
 
 
@@ -22,6 +26,7 @@ class HomeContainer extends React.Component {
             <HomeContent
                 metaList={this.props.currentPage.get('post_meta_list')}
                 page={this.props.page}
+                action={this.handleNextPage}
             />
         </div>);
     }
@@ -40,6 +45,6 @@ const mapStateToProps = (state, ownProps) => {
 export default connect(
     mapStateToProps,
     dispatch => ({
-        initHomePosts: (page, update) => (dispatch(getHomePosts(page, update)))
+        getHomePosts: (page, update) => (dispatch(getHomePosts(page, update)))
     })
 )(HomeContainer)
