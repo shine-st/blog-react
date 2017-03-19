@@ -8,25 +8,41 @@ import React, { PropTypes } from 'react'
 import { getPosts } from '../actions';
 
 
-class ContentContainer extends React.Component {
+// class ContentContainer extends React.Component {
+//
+//     constructor(props) {
+//         super(props);
+//         props.initPost(props.path, props.update);
+//     }
+//
+//     render() {
+//         return (<div>
+//             <PostHeader
+//                 title={this.props.metaData.get('title')}
+//                 subtitle={this.props.metaData.get('subtitle')}
+//                 createAt={this.props.metaData.get('create_at')}
+//             />
+//             <PostContent
+//                 content={this.props.post.get('content')}
+//             />
+//         </div>);
+//     }
+// }
 
-    constructor(props) {
-        super(props);
-        props.initPost(props.path, props.update);
-    }
+const ContentContainer = ({post, metaData, path, update, initPost}) => {
+    if ((!post.get('content')) || metaData.get('path') != path)
+        initPost(path, update);
 
-    render() {
-        return (<div>
-            <PostHeader
-                title={this.props.metaData.get('title')}
-                subtitle={this.props.metaData.get('subtitle')}
-                createAt={this.props.metaData.get('create_at')}
-            />
-            <PostContent
-                content={this.props.post.get('content')}
-            />
-        </div>);
-    }
+    return (<div>
+        <PostHeader
+            title={metaData.get('title')}
+            subtitle={metaData.get('subtitle')}
+            createAt={metaData.get('create_at')}
+        />
+        <PostContent
+            content={post.get('content')}
+        />
+    </div>);
 }
 
 
