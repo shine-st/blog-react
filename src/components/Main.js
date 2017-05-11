@@ -7,10 +7,13 @@ import Footer from './Footer';
 
 const Main = (props) => {
     console.log(props);
+    let isBackend = props.location.pathname.indexOf("backend") != -1;
 
     return (
         <div>
-            <Navigation />
+            <Navigation
+                backend={isBackend}
+            />
             {props.children}
             <Footer />
         </div>

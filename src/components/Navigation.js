@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Link, IndexLink,Router, Route, hashHistory, IndexRoute, IndexRedirect} from "react-router";
+import { Link, IndexLink, Router, Route, hashHistory, IndexRoute, IndexRedirect } from "react-router";
 
 class Navigation extends React.Component {
     constructor(props) {
@@ -10,17 +10,23 @@ class Navigation extends React.Component {
             value: 'Type some *markdown* here!',
         }
     }
+
     handleChange() {
         this.setState({value: this.refs.textarea.value});
     }
 
     render() {
+        let homeLink = this.props.backend ? (<Link to="/backend">Backend</Link>) : (
+            <IndexLink to="/">Home</IndexLink>);
+
+
         return (
             <nav className="navbar navbar-default navbar-custom navbar-fixed-top">
                 <div className="container-fluid">
 
                     <div className="navbar-header page-scroll">
-                        <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <button type="button" className="navbar-toggle" data-toggle="collapse"
+                                data-target="#bs-example-navbar-collapse-1">
                             <span className="sr-only">Toggle navigation</span>
                             Menu <i className="fa fa-bars"></i>
                         </button>
@@ -31,7 +37,7 @@ class Navigation extends React.Component {
                     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul className="nav navbar-nav navbar-right">
                             <li>
-                                <IndexLink to="/">Home</IndexLink>
+                                {homeLink}
                             </li>
                             <li>
                                 <Link to="/about/me">About</Link>
