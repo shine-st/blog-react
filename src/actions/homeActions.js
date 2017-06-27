@@ -5,7 +5,7 @@
 
 import { GET_HOME_SUCCESS,GET_ABOUT_SUCCESS } from '../constants/actionTypes';
 
-import { callApi } from '../utils';
+import { callApi } from '../utils/api';
 
 export const getHomePosts = (page, update) => {
     let uri = `home/${page}`;

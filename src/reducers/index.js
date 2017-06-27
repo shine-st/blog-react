@@ -3,18 +3,21 @@
  */
 
 import { combineReducers } from 'redux-immutable';
-import ui from './ui/uiReducers';// import routes from './routes';
-import post from './data/postReducers';// import routes from './routes';
-import categories from './data/categoriesReducers';// import routes from './routes';
-import home from './data/homeReducers';// import routes from './routes';
-import about from './data/aboutReducers';// import routes from './routes';
+// import routes from './routes';
+import ui from './ui/uiReducers';
+import post from './data/postReducers';
+import categories from './data/categoriesReducers';
+import home from './data/homeReducers';
+import about from './data/aboutReducers';
+import login from './data/loginReducers';
 
 const rootReducer = combineReducers({
     ui,
     home,
     categories,
     post,
-    about
+    about,
+    login
 });
 
 export default rootReducer;

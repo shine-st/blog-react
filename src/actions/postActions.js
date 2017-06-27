@@ -3,7 +3,7 @@
  */
 
 import { GET_POST_SUCCESS } from '../constants/actionTypes';
-import { callApi } from '../utils';
+import { callApi } from '../utils/api';
 
 export const getPosts = (path, update) => {
     let uri = `post/${path}`;

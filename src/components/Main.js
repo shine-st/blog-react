@@ -6,7 +6,7 @@ import Header from '../containers/HomeContainer';
 import Footer from './Footer';
 
 const Main = (props) => {
-    console.log(props);
+
     let isBackend = props.location.pathname.indexOf("backend") != -1;
 
     return (

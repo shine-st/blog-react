@@ -6,7 +6,6 @@ import Footer from '../Footer';
 import BackendHeader from './BackendHeader';
 
 const BackendMain = (props) => {
-    console.log(props);
 
     return (
         <div>

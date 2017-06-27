@@ -3,9 +3,11 @@
  */
 
 import Immutable from 'immutable';
+import auth from '../utils/auth'
 
 export const UiState = Immutable.fromJS({
     spinnerVisible: false,
+    errorMessageVisible: false
 });
 
 export const HomeState = Immutable.fromJS({
@@ -52,4 +54,12 @@ export const CategoriesCountState = Immutable.fromJS({
     description: '',
     postCount: ''
 });
+
+export const LoginState = Immutable.fromJS({
+    loginForm: {
+        id: '',
+        password: ''
+    },
+    isLogin: auth.isLogin()
+})
 
