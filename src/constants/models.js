@@ -11,7 +11,6 @@ export const UiState = Immutable.fromJS({
 });
 
 export const HomeState = Immutable.fromJS({
-    homePosts: [],
     currentPage: {
         page: '',
         post_meta_list: [],
@@ -21,7 +20,6 @@ export const HomeState = Immutable.fromJS({
 });
 
 export const PostState = Immutable.fromJS({
-    posts: [],
     post: {
         post_meta_data: {},
         content: '',
@@ -35,12 +33,6 @@ export const AboutState = Immutable.fromJS({
     content: '',
     query_at: ''
 });
-
-// export const PostState = Immutable.fromJS({
-//     posts: [],
-//     post: {}
-// });
-
 
 export const CategoriesState = Immutable.fromJS({
     page: '',
@@ -63,3 +55,15 @@ export const LoginState = Immutable.fromJS({
     isLogin: auth.isLogin()
 })
 
+export const EditState = Immutable.fromJS({
+    posts: [],
+    post: {
+        id: 'new',
+        title: '',
+        path: '',
+        subtitle: '',
+        categoryId: [],
+        md: '',
+        content: ''
+    }
+});

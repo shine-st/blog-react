@@ -26,12 +26,23 @@ export const callApi = (uri, actionType, update = false) => (
     }
 );
 
+
+export const get = (uri) => (
+    fetch(`${config.api.host}/${uri}`, {
+        method: 'get',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.token
+        }
+    }).then(parseResp).then(checkStatus)
+)
+
 export const post = (uri, body) => (
     fetch(`${config.api.host}/${uri}`, {
         method: 'post',
         headers: {
             'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.token
         },
         body: JSON.stringify(body)
     }).then(parseResp).then(checkStatus)

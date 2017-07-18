@@ -5,11 +5,12 @@
 import { combineReducers } from 'redux-immutable';
 // import routes from './routes';
 import ui from './ui/uiReducers';
-import post from './data/postReducers';
-import categories from './data/categoriesReducers';
-import home from './data/homeReducers';
-import about from './data/aboutReducers';
-import login from './data/loginReducers';
+import post from './frontend/postReducers';
+import categories from './frontend/categoriesReducers';
+import home from './frontend/homeReducers';
+import about from './frontend/aboutReducers';
+import login from './backend/loginReducers';
+import edit from './backend/editReducers';
 
 const rootReducer = combineReducers({
     ui,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
     categories,
     post,
     about,
-    login
+    login,
+    edit
 });
 
 export default rootReducer;

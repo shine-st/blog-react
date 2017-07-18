@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { hashHistory, IndexRedirect, Route, Router } from "react-router";
+import { browserHistory,hashHistory, IndexRedirect, Route, Router } from "react-router";
 import store from "./store";
 import Main from "./components/Main";
 import HomeContainer from "./containers/HomeContainer";
@@ -9,7 +9,7 @@ import PostContainer from "./containers/PostContainer";
 import AboutContainer from "./containers/AboutContainer";
 import BackendMain from "./components/backend/BackendMain";
 import LoginContainer from "./containers/LoginContainer";
-
+import EditPostContainer from "./containers/EditPostContainer"
 // <IndexRoute component={HomeContainer}/>
 
 ReactDOM.render(
@@ -22,6 +22,8 @@ ReactDOM.render(
                 <Route path="/about/:type" component={AboutContainer}/>
                 <Route path="/backend" component={BackendMain}>
                     <Route path="/backend/login" component={LoginContainer}/>
+                    <Route path="/backend/edit-post" component={EditPostContainer} onEnter={EditPostContainer.editPostListEnter(store)}/>
+                    <Route path="/backend/edit-post/:id" component={EditPostContainer} onEnter={EditPostContainer.editPostEnter(store)}/>
                 </Route>
             </Route>
         </Router>

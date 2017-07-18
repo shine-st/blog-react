@@ -3,10 +3,7 @@
  */
 
 import React, { Component } from 'react';
-
-import ReactDOM from 'react-dom';
-import { Col, Form, FormGroup, ControlLabel, FormControl, HelpBlock, Button } from 'react-bootstrap'
-// import {FieldGroup} from '../../utils/form'
+import { Button, Col, ControlLabel, Form, FormControl, FormGroup } from 'react-bootstrap'
 
 
 class Login extends Component {
@@ -19,9 +16,6 @@ class Login extends Component {
 
     handleChange = (key) => (e) => {
         this.props.actions.changeLoginForm(key,e.target.value)
-        // let obj = {}
-        // obj[key] = e.target.value
-        // this.setState(obj);
     }
 
     getIdValidationState = () => {
@@ -42,21 +36,12 @@ class Login extends Component {
             return 'warning'
     }
 
-    onSubmit = (evt, password,dd,cc) => {
+    onSubmit = (evt) => {
         evt.preventDefault();
         this.props.actions.login(this.props.loginForm)
-        console.log(evt)
-        console.log(password)
-        console.log(dd)
-        console.log(cc)
     }
 
     render() {
-        let hr = React.createElement('hr', '', '');
-        let backgroundImage = {
-            backgroundImage: "url('res/img/home_bg.jpg')"
-        }
-
         return (
             <div className="container">
                 <Form horizontal
@@ -108,7 +93,6 @@ class Login extends Component {
                     </FormGroup>
 
                 </Form>
-                {this.props.errorMessage}
             </div>
         )
     }
