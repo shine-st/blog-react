@@ -85,5 +85,5 @@ export const editPost = (body) => (dispatch) => {
  */
 function forwardTo(location) {
     console.log('forwardTo(' + location + ')');
-    browserHistory.push('/#' + location);
+    browserHistory.push(location);
 }

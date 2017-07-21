@@ -21,7 +21,7 @@ const Home = ({metaList, page, action}) => {
                 <div className="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
                     {metaList.map((result, index) => {
-                        let postLink = "post/" + result.get('path');
+                        let postLink = "/post/" + result.get('path');
                         return (
                             <div className="post-preview" key={index}>
                                 <Link to={postLink}>

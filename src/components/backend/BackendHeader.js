@@ -4,7 +4,7 @@ import React from "react";
 const BackendHeader = () => {
     let hr = React.createElement('hr', '', '');
     let backgroundImage = {
-        backgroundImage: "url('res/img/home_bg.jpg')"
+        backgroundImage: "url('/images/home_bg.jpg')"
     }
 
     return (

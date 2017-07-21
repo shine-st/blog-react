@@ -1,46 +1,41 @@
+const path = require("path");
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+
+// path.resolve will always result in an absolute URL
+
 const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
-    template: `${__dirname}/src/index.html`,
+    template: path.resolve('public', 'index.html'),
     filename: 'index.html',
     inject: 'body',
 });
+
 
 module.exports = {
     entry: [
         './src/index.js',
     ],
     output: {
-        // path: `${__dirname}/dist`,
-        // path: `src`,
-        path: `${__dirname}/src`,
-        filename: 'bundle.js',
-        publicPath: '/',
+        path: path.resolve("public"),
+        publicPath: "/",
+        filename: 'bundle.js'
     },
     module: {
-        preLoaders: [
-            {
-                test: /\.jsx$\\.js$/,
-                loader: 'eslint-loader',
-                include: `${__dirname}/src`,
-                exclude: /bundle\.js$/,
-            },
-        ],
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
             },
-            {
-                test: /\.json$/,
-                loader: 'json-loader'
-            }
         ]
     },
     devServer: {
         inline: true,
         port: 8008,
+        // historyApiFallback:{
+        //     index:'/src/index.html'
+        // },
     },
     plugins: [HTMLWebpackPluginConfig],
     externals: {

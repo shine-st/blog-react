@@ -46,7 +46,7 @@ import ReactDOM from 'react-dom';
 
 const PostHeader = ({title, subtitle, createAt}) => {
     let backgroundImage = {
-        backgroundImage: "url('res/img/post_bg.jpg')"
+        backgroundImage: "url('/images/post_bg.jpg')"
     }
 
     return (
